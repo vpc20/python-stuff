@@ -22,5 +22,5 @@ def pascal_iter(n, k):  # dynamic solution
 
 
 if __name__ == '__main__':
-    print(pascal_recur(5, 5))
-    print(pascal_iter(5, 5))
+    print(pascal_recur(5, 2))
+    print(pascal_iter(5, 2))
