@@ -53,6 +53,19 @@
 #             d = max(d, list_depth_recur(e, d + 1))
 #     return d
 
+def list_depth(arr):
+    def list_depthx(arr, depth):
+        nonlocal maxd
+        maxd = max(maxd, depth)
+        for e in arr:
+            if isinstance(e, list):
+                list_depthx(e, depth + 1)
+
+    maxd = 1
+    list_depthx(arr, 1)
+    return maxd
+
+
 def list_depth_recur(arr):
     d = 1
     for e in arr:
@@ -106,3 +119,31 @@ if __name__ == '__main__':
     assert list_depth_recur([[8, 9], 1, [2, 3, [4]]]) == 3
     assert list_depth_recur([8]) == 1
     assert list_depth_recur([[8, [1]], [7], [6]]) == 3
+
+    assert list_depth([1]) == 1
+    assert list_depth([1, 2, 3]) == 1
+    assert list_depth([[1, 2], 3]) == 2
+    assert list_depth([1, [2, 3]]) == 2
+    assert list_depth([1, [2, 3, [4]]]) == 3
+    assert list_depth([[8, 9], 1, [2, 3, [4]]]) == 3
+    assert list_depth([[[[[1]]]]]) == 5
+
+    assert list_depth([1, [2, 2], 1, [2, 2], 1, [2, 2]]) == 2
+    assert list_depth([1, 2, 3, 4, 5]) == 1
+    assert list_depth([[8, 9], 1, [[1], 2, 3]]) == 3
+    assert list_depth([[1, 2], [3, 4]]) == 2
+    assert list_depth([[1, 2], [3, 4], [5, 6]]) == 2
+    assert list_depth([[1, 2], [3, 4, [1]], [5, 6]]) == 3
+
+    assert list_depth([1, [2]]) == 2
+    assert list_depth([[1], 2]) == 2
+
+    assert list_depth([1, [2], [3, [4]]]) == 3
+    assert list_depth([[3, [4]], 1, [2]]) == 3
+    assert list_depth([[3, [4], 1, [2]]]) == 3
+    assert list_depth([[[3]]]) == 3
+
+    assert list_depth([[8, 9], 1, [2, 3, [4]]]) == 3
+    assert list_depth([[8, 9], 1, [2, 3, [4]]]) == 3
+    assert list_depth([8]) == 1
+    assert list_depth([[8, [1]], [7], [6]]) == 3
