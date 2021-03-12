@@ -26,6 +26,16 @@ def caesar_cipher(s, shift):
     s = s.translate(s.maketrans(ascii_lowercase, caesar_lower))
     return ''.join(s)
 
+# class CaesarCipher(object):
+#     def __init__(self, shift):
+#         self.shift = shift
+#
+#     def encode(self, s):
+#         return ''.join(chr((ord(c) + self.shift - 65) % 26 + 65) if c.isupper() else c for c in s.upper())
+#
+#     def decode(self, s):
+#         return ''.join(chr((ord(c) - self.shift - 65) % 26 + 65) if c.isupper() else c for c in s.upper())
+
 
 print(caesar_cipher('abc', 1))
 print(caesar_cipher('ABC', 1))
