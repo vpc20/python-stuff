@@ -16,6 +16,22 @@ def longest_common_prefix1(s1, s2):
         i += 1
     return lcp
 
+# more than 2 strings
+# def longestCommonPrefix(strs):
+#     if not strs:
+#         return ''
+#     lcp = ''
+#     first = strs[0]
+#     for i in range(len(first)):
+#         try:
+#             for s in strs[1:]:
+#                 if first[i] != s[i]:
+#                     return lcp
+#         except IndexError:
+#             return lcp
+#         lcp += first[i]
+#     return lcp
+
 
 print(longest_common_prefix('abcdea', 'abcxya'))
 print(longest_common_prefix1('abcdea', 'abcxya'))
