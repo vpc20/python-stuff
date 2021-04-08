@@ -10,7 +10,10 @@ def knight_tour_recur(n):
             # return True
             print('-' * 64)
             for r in board:
-                print(r)
+                # print(r)
+                for e in r:
+                    print(str(e).zfill(2) + ' ', end='')
+                print()
             boards.append(board)
         for xd, yd in xy_delta:
             if -1 < x + xd < n and -1 < y + yd < n and board[x + xd][y + yd] == EMPTY:
@@ -168,7 +171,7 @@ def knight_tour_iter(n):
 
 
 if __name__ == '__main__':
-    print(len(knight_tour_recur(5)))
+    print(len(knight_tour_recur(8)))
     # for row in knight_tour_recur(5):
     #     print(row)
 
