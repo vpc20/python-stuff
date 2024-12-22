@@ -28,22 +28,18 @@ def bfs_maze_paths(maze, start, end):
       end: A tuple representing the ending position (row, col).
 
     Returns:
-      A list of all possible paths, where each path is a list of tuples
-      representing the coordinates of the cells visited in the path.
+      One of the possible paths. There could be more solutions or none.
     """
 
     rows, cols = len(maze), len(maze[0])
     queue = deque([(start, [start])])  # Queue to store nodes to be visited
-
-    all_paths = []
 
     while queue:
         (r, c), path = queue.popleft()
 
         # Check if we have reached the end
         if (r, c) == end:
-            all_paths.append(path)
-            continue
+            return path
 
         # Define possible moves (up, down, left, right)
         for nr, nc in [(r - 1, c), (r, c + 1), (r + 1, c), (r, c - 1)]:
@@ -52,25 +48,21 @@ def bfs_maze_paths(maze, start, end):
                 # Only add to the queue if not previously visited in this specific path
                 if (nr, nc) not in path:
                     queue.append(((nr, nc), path + [(nr, nc)]))
+                # queue.append(((nr, nc), path + [(nr, nc)]))
 
-    # remove duplicates - convert to tuple, then convert to set, then convert to list
-    # all_paths_tuple = [tuple(i) for i in all_paths]
-    # x = list(set(all_paths_tuple))
-    # print(len(all_paths))
-    # print(len(x))
-    return all_paths
+    return single_path
 
 
 # Example usage
-# maze_txt = '''
-# ...
-# ...
-# ...'''
-
 maze_txt = '''
 ...
-.#.
+...
 ...'''
+
+# maze_txt = '''
+# ...
+# .#.
+# ...'''
 
 print('Maze')
 maze = [[c for c in txt] for txt in maze_txt.strip().split('\n')]
@@ -81,12 +73,11 @@ print()
 start = (0, 0)
 end = (2, 2)
 
-all_paths = bfs_maze_paths(maze, start, end)
+single_path = bfs_maze_paths(maze, start, end)
 
-if all_paths:
-    print("All possible paths:")
-    for path in all_paths:
-        print(path)
-        print_path_in_maze(maze, path)
+if single_path:
+    print("One of the solution path:")
+    print(single_path)
+    print_path_in_maze(maze, single_path)
 else:
     print("No path found.")
