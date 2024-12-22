@@ -1,7 +1,7 @@
 def print_path_in_maze(maze, path):
     """Visualize the path in the maze"""
     # Create a copy of the maze for visualization
-    vis_maze = [row[:] for row in maze]
+    vis_maze = [row for row in maze]
 
     # Mark the path with steps number
     steps = 0
@@ -105,7 +105,6 @@ if start is None or end is None:
     print("Start or end position not found in the maze.")
 else:
     path = dfs(maze, start, end)
-
     if path:
         print(f"Path found: {path}\n")
         print_path_in_maze(maze, path)
