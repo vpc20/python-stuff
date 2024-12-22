@@ -107,8 +107,7 @@ else:
     path = dfs(maze, start, end)
 
     if path:
-        print("Path found:")
-        print(path)
+        print(f"Path found: {path}\n")
         print_path_in_maze(maze, path)
     else:
         print("No path found.")
