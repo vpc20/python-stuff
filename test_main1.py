@@ -4,7 +4,7 @@ import unittest
 from io import StringIO
 from unittest.mock import patch
 
-import main  # Replace with the name of the module containing the main function
+import shell  # Replace with the name of the module containing the main function
 
 
 class TestShell(unittest.TestCase):
